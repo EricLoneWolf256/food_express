@@ -86,7 +86,7 @@
             }
         ?>
 
-        <p class="text-center">Created By - <a href="#">Your Name</a></p>
+        <p class="text-center">2026 All rights reserved, Food Express.</p>
     </div>
 </body>
 </html>

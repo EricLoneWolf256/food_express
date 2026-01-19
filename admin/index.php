@@ -58,12 +58,6 @@
     </div>
     <!-- Main Content Section Ends -->
 
-    <!-- Footer Section Starts -->
-    <div class="footer">
-        <div class="wrapper">
-            <p class="text-center">2026 All rights reserved, Food Express. Developed By - <a href="#">Your Name</a></p>
-        </div>
-    </div>
-    <!-- Footer Section Ends -->
+<?php include('partials/footer.php'); ?>
 </body>
 </html>

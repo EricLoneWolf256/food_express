@@ -54,22 +54,40 @@
         <form action="" method="POST">
         
             <table class="tbl-30">
+                <?php 
+                    $order_number = isset($row['order_number']) ? $row['order_number'] : "";
+                    $total = $row['total'];
+                ?>
                 <tr>
-                    <td>Food Name</td>
-                    <td><b> <?php echo $food; ?> </b></td>
+                    <td>Order #</td>
+                    <td><b> <?php echo $order_number; ?> </b></td>
                 </tr>
 
                 <tr>
-                    <td>Price</td>
+                    <td>Items</td>
                     <td>
-                        <b> $ <?php echo $price; ?> </b>
+                        <?php 
+                            // Fetch items from tbl_order_items if table exists and has data
+                            // Or just display 'food' column if legacy
+                            // Professional approach:
+                            $sql_items = "SELECT * FROM tbl_order_items WHERE order_id=$id";
+                            $res_items = mysqli_query($conn, $sql_items);
+                            if(mysqli_num_rows($res_items) > 0) {
+                                while($item = mysqli_fetch_assoc($res_items)) {
+                                    echo "Food ID: " . $item['food_id'] . " | Qty: " . $item['qty'] . " | Total: $" . $item['total'] . "<br>";
+                                    // ideally we join with tbl_food to get name, but let's keep it simple for now
+                                }
+                            } else {
+                                echo $row['food']; // Fallback
+                            }
+                        ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td>Qty</td>
+                    <td>Total Price</td>
                     <td>
-                        <input type="number" name="qty" value="<?php echo $qty; ?>">
+                        <b> $ <?php echo $total; ?> </b>
                     </td>
                 </tr>
 
@@ -77,8 +95,10 @@
                     <td>Status</td>
                     <td>
                         <select name="status">
-                            <option <?php if($status=="Ordered"){echo "selected";} ?> value="Ordered">Ordered</option>
-                            <option <?php if($status=="On Delivery"){echo "selected";} ?> value="On Delivery">On Delivery</option>
+                            <option <?php if($status=="Ordered"){echo "selected";} ?> value="Ordered">Ordered (Pending)</option>
+                            <option <?php if($status=="Confirmed"){echo "selected";} ?> value="Confirmed">Confirmed</option>
+                            <option <?php if($status=="Preparing"){echo "selected";} ?> value="Preparing">Preparing</option>
+                            <option <?php if($status=="Out for Delivery"){echo "selected";} ?> value="Out for Delivery">Out for Delivery</option>
                             <option <?php if($status=="Delivered"){echo "selected";} ?> value="Delivered">Delivered</option>
                             <option <?php if($status=="Cancelled"){echo "selected";} ?> value="Cancelled">Cancelled</option>
                         </select>
@@ -116,8 +136,6 @@
                 <tr>
                     <td colspan="2">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <input type="hidden" name="price" value="<?php echo $price; ?>">
-
                         <input type="submit" name="submit" value="Update Order" class="btn-secondary">
                     </td>
                 </tr>
@@ -133,10 +151,9 @@
                 //echo "Clicked";
                 //Get All the Values from Form
                 $id = $_POST['id'];
-                $price = $_POST['price'];
-                $qty = $_POST['qty'];
-
-                $total = $price * $qty;
+                
+                // $price = $_POST['price']; // Total is fixed usually unless we edit items
+                // $qty = $_POST['qty'];
 
                 $status = $_POST['status'];
 
@@ -147,8 +164,6 @@
 
                 //Update the Values
                 $sql2 = "UPDATE tbl_order SET 
-                    qty = $qty,
-                    total = $total,
                     status = '$status',
                     customer_name = '$customer_name',
                     customer_contact = '$customer_contact',
