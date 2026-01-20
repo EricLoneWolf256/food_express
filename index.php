@@ -26,6 +26,7 @@
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
 
+            <div class="float-container">
             <?php 
                 //Create SQL Query to Display CAtegories from Database
                 $sql = "SELECT * FROM tbl_category WHERE active='Yes' AND featured='Yes' LIMIT 3";
@@ -46,7 +47,7 @@
                         ?>
                         
                         <a href="<?php echo SITEURL; ?>category-foods.php?category_id=<?php echo $id; ?>">
-                            <div class="box-3 float-container">
+                            <div class="box-3">
                                 <?php 
                                     //Check whether Image is available or not
                                     if($image_name=="")
@@ -76,8 +77,7 @@
                     echo "<div class='error'>Category not Added.</div>";
                 }
             ?>
-
-            <div class="clearfix"></div>
+            </div>
         </div>
     </section>
 
@@ -85,6 +85,7 @@
         <div class="container">
             <h2 class="text-center">Food Menu</h2>
 
+            <div class="food-menu-container">
             <?php 
             
             //Getting Foods from Database that are active and featured
@@ -157,8 +158,7 @@
             }
             
             ?>
-
-            <div class="clearfix"></div>
+            </div>
         </div>
     </section>
 

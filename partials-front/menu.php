@@ -12,26 +12,24 @@
         <div class="container">
             <div class="logo">
                 <a href="<?php echo SITEURL; ?>" title="Logo">
-                    <h1>FoodExpress</h1>
+                    <h1>FoodExpress<span style="color:var(--text-dark)">.</span></h1>
                 </a>
             </div>
 
-            <div class="menu text-right">
+            <div class="menu">
                 <ul>
                     <li><a href="<?php echo SITEURL; ?>">Home</a></li>
-                    <li><a href="<?php echo SITEURL; ?>categories.php">Categories</a></li>
+                    <li><a href="<?php echo SITEURL; ?>categories.php">Menu</a></li>
                     <li><a href="<?php echo SITEURL; ?>foods.php">Foods</a></li>
                     <?php if(isset($_SESSION['user'])) { ?>
-                        <li><a href="<?php echo SITEURL; ?>my-orders.php">My Orders</a></li>
-                        <li><a href="<?php echo SITEURL; ?>logout.php">Logout</a></li>
+                        <li><a href="<?php echo SITEURL; ?>my-orders.php">Orders</a></li>
+                        <li><a href="<?php echo SITEURL; ?>cart.php">Cart</a></li>
+                        <li><a href="<?php echo SITEURL; ?>logout.php" class="btn-primary" style="padding: 5px 15px; color: white;">Logout</a></li>
                     <?php } else { ?>
                         <li><a href="<?php echo SITEURL; ?>login.php">Login</a></li>
-                        <li><a href="<?php echo SITEURL; ?>signup.php">Sign Up</a></li>
+                        <li><a href="<?php echo SITEURL; ?>signup.php" class="btn-primary" style="padding: 5px 15px; color: white;">Sign Up</a></li>
                     <?php } ?>
-                    <li><a href="<?php echo SITEURL; ?>cart.php">Cart</a></li>
                 </ul>
             </div>
-
-            <div class="clearfix"></div>
         </div>
     </section>
