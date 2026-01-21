@@ -13,7 +13,7 @@
                 $row = mysqli_fetch_assoc($res);
                 $total_revenue = $row['Total'];
             ?>
-            <h1>$<?php echo round($total_revenue, 2); ?></h1>
+            <h1>$<?php echo round((float)$total_revenue, 2); ?></h1>
             <br />
             Total Revenue (Delivered)
         </div>

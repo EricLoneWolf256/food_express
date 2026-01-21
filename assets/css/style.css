@@ -340,6 +340,19 @@ a {
 }
 
 /* --- Forms & Order --- */
+
+.btn-danger {
+    background: var(--danger);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+}
+
+.btn-danger:hover {
+    background: #e04050;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 71, 87, 0.4);
+}
+
 .order {
     max-width: 600px;
     margin: 0 auto;
@@ -347,6 +360,8 @@ a {
     padding: 40px;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-lg);
+    color: var(--text-dark);
+    /* Fix invisible text */
 }
 
 fieldset {
@@ -417,9 +432,19 @@ textarea {
     margin-bottom: 10px;
 }
 
+
+
 .social-links a {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-right: 15px;
+    color: var(--white);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
 .copyright {
@@ -431,21 +456,25 @@ textarea {
 
 /* --- Utility Messages --- */
 .success {
-    background: rgba(46, 213, 115, 0.1);
+    background: var(--white);
     color: var(--success);
     padding: 15px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--success);
     margin-bottom: 20px;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
 }
 
 .error {
-    background: rgba(255, 71, 87, 0.1);
+    background: var(--white);
     color: var(--danger);
     padding: 15px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--danger);
     margin-bottom: 20px;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
 }
 
 /* --- Responsive --- */

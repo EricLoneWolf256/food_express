@@ -11,7 +11,7 @@
         <h2 class="text-center text-white">My Orders</h2>
         <br>
 
-        <table class="tbl-full" style="background-color: white; border-radius: 10px; overflow: hidden; padding: 2%;">
+        <table class="tbl-full" style="background-color: white; border-radius: 10px; overflow: hidden; padding: 2%; color: black;">
             <tr style="background-color: black; color: white;">
                 <th style="padding: 10px;">Order #</th>
                 <th style="padding: 10px;">Date</th>

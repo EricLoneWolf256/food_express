@@ -5,12 +5,13 @@
         border-collapse: collapse;
     }
     .tbl-cart th{
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid #ddd;
         padding: 1%;
         text-align: left;
     }
     .tbl-cart td{
         padding: 1%;
+        color: black;
     }
 </style>
 

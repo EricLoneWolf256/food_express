@@ -67,7 +67,7 @@
                         $_SESSION['signup'] = "<div class='success'>Registration Successful. Please Login.</div>";
                         header('location:'.SITEURL.'login.php');
                     } else {
-                        $_SESSION['signup'] = "<div class='error'>Failed to Register. Username may be taken.</div>";
+                        $_SESSION['signup'] = "<div class='error'>Failed to Register. Username or Email may be taken.</div>";
                         header('location:'.SITEURL.'signup.php');
                     }
                 }

@@ -24,8 +24,8 @@
             <form action="" method="POST" class="order">
                 <fieldset>
                     <legend>Login Details</legend>
-                    <div class="order-label">Username</div>
-                    <input type="text" name="username" placeholder="Enter Username" class="input-responsive" required>
+                    <div class="order-label">Email</div>
+                    <input type="email" name="email" placeholder="Enter Email" class="input-responsive" required>
 
                     <div class="order-label">Password</div>
                     <input type="password" name="password" placeholder="Enter Password" class="input-responsive" required>
@@ -38,10 +38,10 @@
 
             <?php 
                 if(isset($_POST['submit'])) {
-                    $username = mysqli_real_escape_string($conn, $_POST['username']);
+                    $email = mysqli_real_escape_string($conn, $_POST['email']);
                     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-                    $sql = "SELECT * FROM tbl_users WHERE username='$username'";
+                    $sql = "SELECT * FROM tbl_users WHERE email='$email'";
                     $res = mysqli_query($conn, $sql);
 
                     $count = mysqli_num_rows($res);
@@ -52,7 +52,7 @@
 
                         if(password_verify($password, $db_password)) {
                             $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-                            $_SESSION['user'] = $username; 
+                            $_SESSION['user'] = $row['username']; // Keep username for session continuity
                             $_SESSION['user_id'] = $row['id'];
                             
                             // Check if cart is not empty, redirect to checkout
@@ -62,11 +62,11 @@
                                 header('location:'.SITEURL);
                             }
                         } else {
-                            $_SESSION['login'] = "<div class='error'>Username or Password did not match.</div>";
+                            $_SESSION['login'] = "<div class='error'>Email or Password did not match.</div>";
                             header('location:'.SITEURL.'login.php');
                         }
                     } else {
-                        $_SESSION['login'] = "<div class='error'>Username or Password did not match.</div>";
+                        $_SESSION['login'] = "<div class='error'>Email or Password did not match.</div>";
                         header('location:'.SITEURL.'login.php');
                     }
                 }
