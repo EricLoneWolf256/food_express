@@ -76,7 +76,7 @@
                     $customer_address = mysqli_real_escape_string($conn, $_POST['address']);
                     $payment_method = mysqli_real_escape_string($conn, $_POST['payment_method']);
                     $order_date = date("Y-m-d H:i:s");
-                    $status = "Pending"; // Initial status
+                    $status = "Ordered"; // Initial status
                     $order_number = "ORD-" . strtoupper(uniqid());
                     $total_amount = $_POST['total'];
 

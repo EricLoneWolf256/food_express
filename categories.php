@@ -4,6 +4,7 @@
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
 
+            <div class="float-container">
             <?php 
 
                 //Display all the cateories that are active
@@ -29,7 +30,7 @@
                         ?>
                         
                         <a href="<?php echo SITEURL; ?>category-foods.php?category_id=<?php echo $id; ?>">
-                            <div class="box-3 float-container">
+                            <div class="box-3">
                                 <?php 
                                     if($image_name=="")
                                     {
@@ -59,8 +60,7 @@
                 }
             
             ?>
-
-            <div class="clearfix"></div>
+            </div>
         </div>
     </section>
 

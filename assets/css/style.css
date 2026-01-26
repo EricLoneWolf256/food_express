@@ -507,3 +507,78 @@ textarea {
         margin: 10px 0;
     }
 }
+
+/* --- Login / Signup Forms --- */
+.login-container {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(255, 71, 87, 0.05), rgba(255, 165, 2, 0.05));
+}
+
+.login-form {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.login-form h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+.login-form p {
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="email"],
+.login-form textarea {
+    width: 100%;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border: 2px solid #f1f2f6;
+    background: #f9f9f9;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+    border-color: var(--primary-color);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.1);
+    outline: none;
+}
+
+.login-form .btn-primary {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.login-form .secondary-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.login-form .secondary-text a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.login-form .secondary-text a:hover {
+    text-decoration: underline;
+}

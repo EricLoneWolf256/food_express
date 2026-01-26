@@ -21,6 +21,7 @@
                 }
             ?>
 
+            <div class="food-menu-container">
             <?php 
                 //Display Foods that are Active
                 $sql = "SELECT * FROM tbl_food WHERE active='Yes'";
@@ -91,8 +92,7 @@
                     echo "<div class='error'>Food not found.</div>";
                 }
             ?>
-
-            <div class="clearfix"></div>
+            </div>
         </div>
     </section>
 

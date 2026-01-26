@@ -33,6 +33,7 @@
                     <input type="submit" name="submit" value="Login" class="btn btn-primary">
                     <br><br>
                     <p class="text-center">Don't have an account? <a href="signup.php" style="color: #ff6b81;">Sign Up here</a></p>
+                    <p class="text-center"><a href="forgot-password.php" style="color: yellow;">Forgot Password?</a></p>
                 </fieldset>
             </form>
 
