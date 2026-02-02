@@ -1,7 +1,7 @@
     <!-- footer section starts  -->
     <section class="footer">
         <div class="container text-center">
-            <p>All rights reserved. Designed By <a href="#">Your Name</a></p>
+            <p>All rights reserved.</p>
         </div>
     </section>
     <!-- footer section ends -->

@@ -96,7 +96,7 @@
         $active = $_POST['active'];
 
         // Encrypt Password
-        $password = md5($password);
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO tbl_restaurant SET 
             title='$title',

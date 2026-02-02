@@ -57,20 +57,27 @@
         <?php 
             if(isset($_POST['submit'])) {
                 $username = mysqli_real_escape_string($conn, $_POST['username']);
-                $password = md5($_POST['password']); // Using md5 for consistency with Admin, consider upgrading to password_hash later
+                $password = $_POST['password'];
 
-                $sql = "SELECT * FROM tbl_restaurant WHERE username='$username' AND password='$password' AND active='Yes'";
+                $sql = "SELECT * FROM tbl_restaurant WHERE username='$username' AND active='Yes'";
                 $res = mysqli_query($conn, $sql);
 
                 $count = mysqli_num_rows($res);
 
                 if($count==1) {
                     $row = mysqli_fetch_assoc($res);
-                    $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-                    $_SESSION['restaurant_user'] = $username;
-                    $_SESSION['restaurant_id'] = $row['id']; // Important for filtering data
+                    $db_password = $row['password'];
 
-                    header('location:'.SITEURL.'restaurant/');
+                    if(password_verify($password, $db_password)) {
+                        $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
+                        $_SESSION['restaurant_user'] = $username;
+                        $_SESSION['restaurant_id'] = $row['id']; // Important for filtering data
+
+                        header('location:'.SITEURL.'restaurant/');
+                    } else {
+                        $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
+                        header('location:'.SITEURL.'restaurant/login.php');
+                    }
                 } else {
                     $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match (or account inactive).</div>";
                     header('location:'.SITEURL.'restaurant/login.php');

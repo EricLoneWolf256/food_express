@@ -1,10 +1,9 @@
 <?php include('partials/menu.php'); ?>
 
-<div class="main-content">
-    <div class="wrapper">
-        <h1>Driver Login</h1>
-        <br><br>
-
+<div class="login-container" style="background-color: #f1f2f6; min-height: 80vh; display: flex; justify-content: center; align-items: center;">
+    <div class="login-card" style="background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center;">
+        <h1 class="text-center" style="margin-bottom: 20px; color: #2d3436;">Driver Login</h1>
+        
         <?php 
             if(isset($_SESSION['login']))
             {
@@ -17,31 +16,24 @@
                 unset($_SESSION['no-login-message']);
             }
         ?>
+        <br>
 
         <form action="" method="POST">
-            <table class="tbl-30">
-                <tr>
-                    <td>Username: </td>
-                    <td>
-                        <input type="text" name="username" placeholder="Enter Username" required>
-                    </td>
-                </tr>
+            <div style="margin-bottom: 15px; text-align: left;">
+                <label style="display: block; margin-bottom: 5px; color: #636e72;">Username</label>
+                <input type="text" name="username" placeholder="Enter Username" required class="input-responsive" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 5px;">
+            </div>
 
-                <tr>
-                    <td>Password: </td>
-                    <td>
-                        <input type="password" name="password" placeholder="Enter Password" required>
-                    </td>
-                </tr>
+            <div style="margin-bottom: 20px; text-align: left;">
+                <label style="display: block; margin-bottom: 5px; color: #636e72;">Password</label>
+                <input type="password" name="password" placeholder="Enter Password" required class="input-responsive" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 5px;">
+            </div>
 
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" name="submit" value="Login" class="btn-primary">
-                    </td>
-                </tr>
-            </table>
+            <input type="submit" name="submit" value="Login" class="btn-primary" style="width: 100%; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background 0.3s;">
         </form>
-        <p class="text-center">Don't have an account? <a href="signup.php">Sign Up</a></p>
+        
+        <br>
+        <p class="text-center" style="color: #636e72;">Don't have an account? <a href="signup.php" style="color: #ff6b81; text-decoration: none;">Sign Up</a></p>
     </div>
 </div>
 
