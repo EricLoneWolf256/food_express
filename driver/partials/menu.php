@@ -23,7 +23,8 @@
                     
                     <?php if(isset($_SESSION['driver'])) { ?>
                         <li><a href="<?php echo SITEURL; ?>driver/dashboard.php">Dashboard</a></li>
-                         <li><a href="<?php echo SITEURL; ?>driver/logout.php" class="btn-primary" style="padding: 5px 15px; color: white;">Logout</a></li>
+                        <li><a href="<?php echo SITEURL; ?>driver/my-orders.php">My Orders</a></li>
+                        <li><a href="<?php echo SITEURL; ?>driver/logout.php" class="btn-primary" style="padding: 5px 15px; color: white;">Logout</a></li>
                     <?php } else { ?>
                         <li><a href="<?php echo SITEURL; ?>driver/index.php">Login</a></li>
                         <li><a href="<?php echo SITEURL; ?>driver/signup.php" class="btn-primary" style="padding: 5px 15px; color: white;">Sign Up</a></li>

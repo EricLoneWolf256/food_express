@@ -31,21 +31,13 @@
 
             <div class="col-4 text-center">
                 <?php 
-                    //Sql Query to get orders related to this restaurant
-                    // Since tbl_order doesn't inherently have restaurant_id unless we join or use the new item table logic.
-                    // For now, let's query tbl_order_items if we updated it, or tbl_food join.
-                    // Simplified: count orders where they have items.
-                    // OR if we added restaurant_id to tbl_order (which might be complex if one order has multiple restaurants).
-                    // Let's assume for now we count items sold.
-                    
-                    $sql2 = "SELECT * FROM tbl_food WHERE restaurant_id=$restaurant_id AND active='Yes'"; // Placeholder for Orders
-                    // Better: Count distinct orders from order_items
-                    // But first let's just show Foods and maybe Total Revenue from their items.
-                    
-                    // Let's try to allow them to manage FOODS first. Orders logic is complex without proper multi-vendor structure.
-                    // I will just show "My Foods" and "Revenue" based on their items in tbl_order_items (if populated)
-                    
-                    $count2 = 0; // Placeholder
+                    // Count unique orders for this restaurant
+                    $sql2 = "SELECT DISTINCT o.id FROM tbl_order o 
+                             JOIN tbl_order_items oi ON o.id = oi.order_id 
+                             JOIN tbl_food f ON oi.food_id = f.id
+                             WHERE f.restaurant_id = $restaurant_id";
+                    $res2 = mysqli_query($conn, $sql2);
+                    $count2 = mysqli_num_rows($res2);
                 ?>
                 <h1><?php echo $count2; ?></h1>
                 <br />
@@ -53,9 +45,21 @@
             </div>
 
             <div class="col-4 text-center">
-                <h1>$0.00</h1>
+                <?php 
+                    // Calculate Total Revenue (based on items sold by this restaurant)
+                    // Only count if order is Delivered (optional, but typical)
+                    // For now, let's count all valid orders
+                    $sql3 = "SELECT SUM(oi.total) AS total_revenue FROM tbl_order_items oi 
+                             JOIN tbl_food f ON oi.food_id = f.id
+                             WHERE f.restaurant_id = $restaurant_id";
+                    $res3 = mysqli_query($conn, $sql3);
+                    $row3 = mysqli_fetch_assoc($res3);
+                    $total_revenue = $row3['total_revenue'];
+                    if($total_revenue == "") $total_revenue = 0;
+                ?>
+                <h1>$<?php echo constant('number_format') ? number_format($total_revenue, 2) : $total_revenue; ?></h1>
                 <br />
-                Pending Revenue
+                Total Revenue
             </div>
 
             <div class="clearfix"></div>

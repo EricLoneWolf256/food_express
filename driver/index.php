@@ -20,8 +20,8 @@
 
         <form action="" method="POST">
             <div style="margin-bottom: 15px; text-align: left;">
-                <label style="display: block; margin-bottom: 5px; color: #636e72;">Username</label>
-                <input type="text" name="username" placeholder="Enter Username" required class="input-responsive" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 5px;">
+                <label style="display: block; margin-bottom: 5px; color: #636e72;">Email</label>
+                <input type="email" name="email" placeholder="Enter Email" required class="input-responsive" style="width: 100%; padding: 10px; border: 1px solid #dfe6e9; border-radius: 5px;">
             </div>
 
             <div style="margin-bottom: 20px; text-align: left;">
@@ -42,18 +42,20 @@
 <?php 
     if(isset($_POST['submit']))
     {
-        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
         $password = mysqli_real_escape_string($conn, md5($_POST['password']));
 
-        $sql = "SELECT * FROM tbl_driver WHERE username='$username' AND password='$password'";
+        $sql = "SELECT * FROM tbl_driver WHERE email='$email' AND password='$password'";
         $res = mysqli_query($conn, $sql);
 
         $count = mysqli_num_rows($res);
 
         if($count==1)
         {
+            $row = mysqli_fetch_assoc($res);
             $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-            $_SESSION['driver'] = $username;
+            $_SESSION['driver'] = $row['username']; // Keep using username for display if available, or use email
+            $_SESSION['driver_id'] = $row['id'];
 
             header('location:'.SITEURL.'driver/dashboard.php');
         }

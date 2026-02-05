@@ -18,6 +18,7 @@
                 <li><a href="manage-restaurant.php">Restaurant</a></li>
                 <li><a href="manage-food.php">Food</a></li>
                 <li><a href="manage-order.php">Order</a></li>
+                <li><a href="manage-driver.php">Driver</a></li>
                 <li><a href="reports.php">Reports</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>

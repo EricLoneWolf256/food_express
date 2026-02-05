@@ -92,6 +92,17 @@
                 Revenue Generated
             </div>
 
+            <div class="col-4 text-center">
+                <?php 
+                    $sql_driver = "SELECT * FROM tbl_driver";
+                    $res_driver = mysqli_query($conn, $sql_driver);
+                    $count_driver = mysqli_num_rows($res_driver);
+                ?>
+                <h1><?php echo $count_driver; ?></h1>
+                <br />
+                Drivers
+            </div>
+
             <div class="clearfix"></div>
         </div>
     </div>

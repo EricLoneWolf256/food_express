@@ -24,7 +24,8 @@
                 
                 $sql = "SELECT DISTINCT o.* FROM tbl_order o 
                         JOIN tbl_order_items oi ON o.id = oi.order_id 
-                        WHERE oi.restaurant_id=$restaurant_id 
+                        JOIN tbl_food f ON oi.food_id = f.id
+                        WHERE f.restaurant_id=$restaurant_id 
                         ORDER BY o.id DESC";
 
                 $res = mysqli_query($conn, $sql);

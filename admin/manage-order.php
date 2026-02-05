@@ -23,6 +23,7 @@
                     <th>Order Date</th>
                     <th>Status</th>
                     <th>Payment</th>
+                    <th>Driver</th>
                     <th>Customer</th>
                     <th>Actions</th>
                 </tr>
@@ -80,6 +81,24 @@
                                     </td>
                                     
                                     <td><?php echo $payment_method; ?></td>
+                                    <td>
+                                        <?php 
+                                            // Get Driver Name
+                                            $driver_id = isset($row['driver_id']) ? $row['driver_id'] : 0;
+                                            if($driver_id != 0) {
+                                                $sql_d = "SELECT full_name FROM tbl_driver WHERE id=$driver_id";
+                                                $res_d = mysqli_query($conn, $sql_d);
+                                                if($res_d && mysqli_num_rows($res_d) > 0) {
+                                                    $row_d = mysqli_fetch_assoc($res_d);
+                                                    echo $row_d['full_name'];
+                                                } else {
+                                                    echo "<span style='color:red;'>N/A</span>";
+                                                }
+                                            } else {
+                                                echo "<span style='color:red;'>None</span>";
+                                            }
+                                        ?>
+                                    </td>
                                     <td><?php echo $customer_name; ?> <br> (<?php echo $customer_contact; ?>)</td>
                                     
                                     <td>

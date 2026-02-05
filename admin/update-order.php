@@ -134,6 +134,28 @@
                 </tr>
 
                 <tr>
+                    <td>Assign Driver: </td>
+                    <td>
+                        <select name="driver_id">
+                            <option value="0">None</option>
+                            <?php 
+                                // Fetch Drivers
+                                $sql_drivers = "SELECT * FROM tbl_driver";
+                                $res_drivers = mysqli_query($conn, $sql_drivers);
+                                if(mysqli_num_rows($res_drivers) > 0) {
+                                    while($driver = mysqli_fetch_assoc($res_drivers)) {
+                                        $d_id = $driver['id'];
+                                        $d_name = $driver['full_name'];
+                                        $selected = ($d_id == $row['driver_id']) ? "selected" : "";
+                                        echo "<option value='$d_id' $selected>$d_name</option>";
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
                     <td colspan="2">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <input type="submit" name="submit" value="Update Order" class="btn-secondary">
@@ -161,6 +183,7 @@
                 $customer_contact = $_POST['customer_contact'];
                 $customer_email = $_POST['customer_email'];
                 $customer_address = $_POST['customer_address'];
+                $driver_id = $_POST['driver_id'];
 
                 //Update the Values
                 $sql2 = "UPDATE tbl_order SET 
@@ -168,7 +191,8 @@
                     customer_name = '$customer_name',
                     customer_contact = '$customer_contact',
                     customer_email = '$customer_email',
-                    customer_address = '$customer_address'
+                    customer_address = '$customer_address',
+                    driver_id = $driver_id
                     WHERE id=$id
                 ";
 
