@@ -103,6 +103,7 @@
                                     
                                     <td>
                                         <a href="<?php echo SITEURL; ?>admin/update-order.php?id=<?php echo $id; ?>" class="btn-secondary">Update Order</a>
+                                        <a href="<?php echo SITEURL; ?>admin/assign-order.php?id=<?php echo $id; ?>" class="btn-primary" style="margin-top: 5px; display:inline-block;">Assign Driver</a>
                                     </td>
                                 </tr>
 

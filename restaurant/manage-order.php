@@ -65,7 +65,8 @@
                             </td>
                             <td><?php echo $customer_name; ?> <br> (<?php echo $customer_contact; ?>)</td>
                             <td>
-                                <a href="#" class="btn-secondary">View Details</a>
+                                <a href="<?php echo SITEURL; ?>restaurant/update-order.php?id=<?php echo $id; ?>" class="btn-secondary">Update Order</a>
+                                <a href="<?php echo SITEURL; ?>restaurant/assign-order.php?id=<?php echo $id; ?>" class="btn-primary" style="margin-top: 5px; display:inline-block;">Assign Driver</a>
                             </td>
                         </tr>
                         <?php

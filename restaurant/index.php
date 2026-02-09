@@ -57,7 +57,7 @@
                     $total_revenue = $row3['total_revenue'];
                     if($total_revenue == "") $total_revenue = 0;
                 ?>
-                <h1>$<?php echo constant('number_format') ? number_format($total_revenue, 2) : $total_revenue; ?></h1>
+                <h1>$<?php echo number_format($total_revenue, 2); ?></h1>
                 <br />
                 Total Revenue
             </div>
